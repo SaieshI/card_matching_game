@@ -90,4 +90,34 @@ class GameScreen extends StatelessWidget{
   }
 }
 
+class CardWidget extends StatelessWidget{
+  final DataModel card; 
 
+  const CardWidget({super.key, required this.card});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut, 
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8), 
+        color: card.faceUp ? Colors.white : Colors.blueAccent, 
+        image: card.faceUp
+          ? null
+          : const DecorationImage(
+            image: AssetImage('assets/images/card_back.png'),
+            fit: BoxFit.cover, 
+          ), 
+      ), 
+      child: Center(
+        child: card.faceUp
+          ? Text(
+            card.image, 
+            style: const TextStyle(fontSize: 30), 
+          )
+          : null, 
+      ), 
+    );
+  }
+}

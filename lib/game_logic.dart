@@ -18,8 +18,8 @@ class GameProvider with ChangeNotifier{
         List<String> cardImages = ['😃', '😅', '😇', '🥰', '😨', '😑', '😎', '🤯'];
         cardImages.shuffle(); 
 
-        cardList = List.generate(cardImages.length, (index) {
-            return DataModel(id: index.toString(), image: images[index]);
+        cardList = List.generate(cardImages.length * 2, (index) {
+            return DataModel(id: index.toString(), image: cardImages[index % cardImages.length],);
         });
 
         notifyListeners(); 
